@@ -1,8 +1,10 @@
 from datetime import datetime
+
 from fastapi import APIRouter, Request
-from fastapi.responses import JSONResponse
 from fastapi.encoders import jsonable_encoder
-from utils import verify_contract
+from fastapi.responses import JSONResponse
+
+from apps.api.utils import verify_contract
 
 from .models import VerifyAppModel
 
@@ -10,7 +12,7 @@ router = APIRouter()
 
 
 @router.post("/", response_description="Verify algorand smart contract.")
-async def verify_app(request: Request, app: VerifyAppModel):
+async def verify_app(request: Request, app: VerifyAppModel) -> JSONResponse:
     success, result = await verify_contract(
         app.approval_github_url,
         app.clear_state_github_url,
@@ -19,7 +21,6 @@ async def verify_app(request: Request, app: VerifyAppModel):
         request.app.INDEXER_CLIENT,
     )
     if success:
-        # create app in the mongo database
         app_dict = jsonable_encoder(app)
         await request.app.db["apps"].insert_one(
             {

@@ -1,11 +1,11 @@
-from fastapi import FastAPI
 import uvicorn
-from motor.motor_asyncio import AsyncIOMotorClient
-from config import settings
-from algosdk.v2client import indexer, algod
+from algosdk.v2client import algod, indexer
+from fastapi import FastAPI
 from github import Github
+from motor.motor_asyncio import AsyncIOMotorClient
 
 from apps.api.routers import router as api_router
+from config import settings
 
 app = FastAPI()
 
