@@ -1,10 +1,9 @@
 from datetime import datetime
 from typing import Optional
-import uuid
-from pydantic import BaseModel, Field, Extra
+from pydantic import BaseModel, Extra
 
 
-class VerifyAppModel(BaseModel, Extra.ignore):
+class VerifyAppModel(BaseModel, extra=Extra.ignore):
 
     app_id: int
     name: str

@@ -21,7 +21,7 @@ async def verify_app(request: Request, app: VerifyAppModel):
     if success:
         # create app in the mongo database
         app_dict = jsonable_encoder(app)
-        await request.app.mongodb["apps"].insert_one(
+        await request.app.db["apps"].insert_one(
             {
                 **app_dict,
                 "onchain_code": result["on-chain-code"],

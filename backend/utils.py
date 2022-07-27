@@ -54,9 +54,7 @@ async def verify_contract(
         if clear_state_byte_code != onchain_bytes_codes["clear-state-program"]:
             return False, "Clear state code does not match what is stored on chain"
         result = {
-            "onchain-code": onchain_bytes_codes,
-            "approval-link": approval_link,
-            "clear-state-link": clear_state_link,
+            "onchain-code": onchain_bytes_codes
         }
         return True, result
     return False, "Verification Failed"
