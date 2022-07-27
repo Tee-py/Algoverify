@@ -1,7 +1,8 @@
-from typing import Dict, Tuple, Union
-from algosdk.v2client import indexer, algod
 import base64
+from typing import Dict, Tuple, Union
+
 import requests
+from algosdk.v2client import algod, indexer
 
 
 async def fetch_contract_byte_code(app_id: str, indexer: indexer.IndexerClient) -> Dict:
