@@ -36,7 +36,7 @@ async def verify_contract(
     app_id: str,
     algod_client: algod.AlgodClient,
     indexer_client: indexer.IndexerClient,
-) -> Tuple[bool, str]:
+) -> Tuple[bool, Union[str, dict]]:
     approval_url = await compose_github_url(approval_link)
     clear_state_url = await compose_github_url(clear_state_link)
     status1, approval_source = await fetch_github_code(approval_url)
@@ -53,5 +53,10 @@ async def verify_contract(
             return False, "Approval code does not match what is stored on chain."
         if clear_state_byte_code != onchain_bytes_codes["clear-state-program"]:
             return False, "Clear state code does not match what is stored on chain"
-        return True, "Verification successfull"
+        result = {
+            "onchain-code": onchain_bytes_codes,
+            "approval-link": approval_link,
+            "clear-state-link": clear_state_link,
+        }
+        return True, result
     return False, "Verification Failed"
