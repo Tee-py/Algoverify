@@ -16,6 +16,10 @@ motor = "*"
 black = "*"
 isort = "*"
 flake8 = "*"
+pytest = "*"
+pytest-cov = "*"
+anyio = "*"
+trio = "*"
 
 [requires]
 python_version = "3.9"
