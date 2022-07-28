@@ -6,8 +6,7 @@ from algosdk.v2client import algod, indexer
 
 
 async def fetch_contract_byte_code(app_id: str, indexer: indexer.IndexerClient) -> Dict:
-    result = indexer.applications(app_id)
-    return result["application"]["params"]
+    return indexer.applications(app_id)
 
 
 async def compose_github_url(link: str) -> str:
@@ -50,12 +49,16 @@ async def verify_contract(
         clear_state_byte_code = await teal_to_bytes(
             clear_state_source.decode("utf-8"), algod_client
         )
-        if approval_byte_code != onchain_bytes_codes["approval-program"]:
+        if (
+            approval_byte_code
+            != onchain_bytes_codes["application"]["params"]["approval-program"]
+        ):
             return False, "Approval code does not match what is stored on chain."
-        if clear_state_byte_code != onchain_bytes_codes["clear-state-program"]:
+        if (
+            clear_state_byte_code
+            != onchain_bytes_codes["application"]["params"]["clear-state-program"]
+        ):
             return False, "Clear state code does not match what is stored on chain"
-        result = {
-            "onchain-code": onchain_bytes_codes
-        }
+        result = {"onchain-code": onchain_bytes_codes["application"]["params"]}
         return True, result
     return False, "Verification Failed"

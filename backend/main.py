@@ -4,10 +4,10 @@ from fastapi import FastAPI
 from github import Github
 from motor.motor_asyncio import AsyncIOMotorClient
 
-from apps.api.routers import router as api_router
+from app.api.routers import router as api_router
 from config import settings
 
-app = FastAPI()
+app = FastAPI(title=settings.APP_NAME)
 
 
 @app.on_event("startup")
