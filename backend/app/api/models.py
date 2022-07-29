@@ -2,8 +2,7 @@ from pydantic import BaseModel, Extra
 
 
 class VerifyAppModel(BaseModel, extra=Extra.ignore):
-
-    app_id: int
+    app_id: str
     name: str
     description: str
     approval_github_url: str

@@ -11,7 +11,7 @@ from .models import VerifyAppModel
 router = APIRouter()
 
 
-@router.post("/", response_description="Verify algorand smart contract.")
+@router.post("/verify-app", response_description="Verify algorand smart contract.")
 async def verify_app(request: Request, app: VerifyAppModel) -> JSONResponse:
     success, result = await verify_contract(
         app.approval_github_url,
@@ -25,10 +25,10 @@ async def verify_app(request: Request, app: VerifyAppModel) -> JSONResponse:
         await request.app.db["apps"].insert_one(
             {
                 **app_dict,
-                "onchain_code": result["on-chain-code"],
+                "onchain_code": result["onchain-code"],
                 "verified": True,
                 "verified_at": datetime.now(),
             }
         )
-        return JSONResponse(status_code=200, content="Verification successfull")
+        return JSONResponse(status_code=200, content={"status": True, "message": "Verification successfull"})
     return JSONResponse(status_code=400, content=result)

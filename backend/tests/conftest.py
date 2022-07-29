@@ -2,8 +2,8 @@ import os
 import sys
 
 import pytest
-from fastapi.testclient import TestClient
 from algosdk.v2client import algod, indexer
+from fastapi.testclient import TestClient
 from motor.motor_asyncio import AsyncIOMotorClient
 
 # To allow imports from main, app e.t.c
@@ -22,7 +22,6 @@ app.ALGOD_CLIENT = algod.AlgodClient(
 
 
 class TestData:
-
     APP_ID = "552635992"
     APPROVAL_URL = "https://github.com/tinymanorg/tinyman-contracts-v1/blob/main/contracts/validator_approval.teal"
     CLEAR_STATE_URL = "https://github.com/tinymanorg/tinyman-contracts-v1/blob/main/contracts/validator_clear_state.teal"

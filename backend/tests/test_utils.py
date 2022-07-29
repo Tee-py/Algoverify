@@ -1,8 +1,9 @@
-from fastapi.testclient import TestClient
 import pytest
+from fastapi.testclient import TestClient
+
 from app.api.utils import (
-    fetch_contract_byte_code,
     compose_github_url,
+    fetch_contract_byte_code,
     fetch_github_code,
     teal_to_bytes,
     verify_contract,
