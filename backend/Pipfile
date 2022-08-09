@@ -11,6 +11,7 @@ py-algorand-sdk = "*"
 pygithub = "*"
 pymongo = "*"
 motor = "*"
+httpx = "*"
 
 [dev-packages]
 black = "*"
