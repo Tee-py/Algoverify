@@ -12,7 +12,7 @@ from .models import VerifyReachAppModel, VerifyTealAppModel
 router = APIRouter()
 
 
-@router.post("/apps/teal/verify", response_description="Verify teal smart contract.")
+@router.post("/apps/teal/verify/", response_description="Verify teal smart contract.")
 async def verify_teal_app(request: Request, app: VerifyTealAppModel) -> JSONResponse:
     app_count = await request.app.db["apps"].count_documents({"app_id": app.app_id})
     if app_count > 0:
@@ -29,7 +29,7 @@ async def verify_teal_app(request: Request, app: VerifyTealAppModel) -> JSONResp
             request.app.INDEXER_CLIENT,
         )
     except Exception as e:
-        raise HTTPException(500, "Failed to verify teal contract")
+        raise HTTPException(500, str(e))
     if success:
         app_dict = jsonable_encoder(app)
         await request.app.db["apps"].insert_one(

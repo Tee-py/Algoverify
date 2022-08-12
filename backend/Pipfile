@@ -9,7 +9,7 @@ uvicorn = {extras = ["standard"], version = "*"}
 mypy = "*"
 py-algorand-sdk = "*"
 pygithub = "*"
-pymongo = "*"
+pymongo = {extras = ["srv"], version = "*"}
 motor = "*"
 httpx = "*"
 
