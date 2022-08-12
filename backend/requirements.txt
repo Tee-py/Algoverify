@@ -1,0 +1,13 @@
+anyio==3.6.1
+coverage==6.4.2
+fastapi==0.79.0
+httpx==0.23.0
+motor==3.0.0
+py-algorand-sdk==1.16.0
+pymongo[srv]==4.2.0
+pytest==7.1.2
+pytest-cov==3.0.0
+python-dotenv==0.20.0
+requests==2.28.1
+uvicorn==0.18.2
+

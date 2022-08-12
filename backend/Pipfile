@@ -1,0 +1,26 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+fastapi = "*"
+uvicorn = {extras = ["standard"], version = "*"}
+mypy = "*"
+py-algorand-sdk = "*"
+pygithub = "*"
+pymongo = {extras = ["srv"], version = "*"}
+motor = "*"
+httpx = "*"
+
+[dev-packages]
+black = "*"
+isort = "*"
+flake8 = "*"
+pytest = "*"
+pytest-cov = "*"
+anyio = "*"
+trio = "*"
+
+[requires]
+python_version = "3.9"
