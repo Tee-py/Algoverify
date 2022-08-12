@@ -1,1 +1,1 @@
-export const BACKEND_BASE_URL = "https://algoverify.herokuapp.com/api";
+export const BACKEND_BASE_URL = "https://algoverify.xyz/api";
