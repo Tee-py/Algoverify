@@ -6,8 +6,9 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Spinner from "react-bootstrap/Spinner";
 import AppAlert from "./alerts";
-import { verifyTealApp } from "../network";
+import { verifyTealApp, verifyReachApp } from "../network";
 import { FormState } from "../types";
+import { AxiosError } from "axios";
 
 const VerifyAppPage: FC = () => {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -73,9 +74,29 @@ const VerifyAppPage: FC = () => {
       };
       try {
         response = await verifyTealApp(payload);
-      } catch {
+      } catch(error) {
+        const err = error as AxiosError;
         setLoading(false);
-        setAlertState({ variant: "danger", message: "An Error Occurred.", show: true });
+        //@ts-expect-error
+        setAlertState({ variant: "danger", message: err.response.data.detail, show: true });
+      }
+      setAlertState({ variant: "success", message: response.message, show: true });
+      setLoading(false);
+    }
+    if (formState.type === "2") {
+      const payload = {
+        app_id: formState.appId,
+        name: formState.name,
+        description: formState.description,
+        github_url: formState.githubUrl
+      };
+      try {
+        response = await verifyReachApp(payload);
+      } catch(error) {
+        const err = error as AxiosError;
+        setLoading(false);
+        //@ts-expect-error
+        setAlertState({ variant: "danger", message: err.response.data.detail, show: true });
       }
       setAlertState({ variant: "success", message: response.message, show: true });
       setLoading(false);

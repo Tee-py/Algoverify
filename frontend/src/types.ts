@@ -25,6 +25,13 @@ export type VerifyTealAppPayload = {
   clear_state_github_url?: string;
 };
 
+export type VerifyReachAppPayload = {
+  app_id?: string;
+  name?: string;
+  description?: string;
+  github_url?: string;
+};
+
 export type FormState = {
   appId?: string;
   name?: string;
