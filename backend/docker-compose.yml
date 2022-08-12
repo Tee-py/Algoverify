@@ -2,17 +2,5 @@ version: "3.9"
 services:
   backend:
     build: .
-    expose:
-      - 8000
-    env_file:
-      - .env
-  reach-cli:
-    image: reachsh/reach-cli
-  reach:
-    image: reachsh/reach
-  reach-runner:
-    image: reachsh/runner
-  reach-rpc:
-    image: reachsh/rpc-server
 
   
