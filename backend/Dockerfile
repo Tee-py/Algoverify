@@ -1,5 +1,5 @@
 FROM python:3.9.13-slim
-RUN apt-get update && apt-get -y install sudo
+RUN apt-get update
 WORKDIR /app
 COPY ./requirements.txt .
 RUN pip install -r requirements.txt

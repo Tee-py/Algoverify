@@ -1,8 +1,12 @@
 import pytest
 
-from app.api.utils import (compose_github_url, fetch_contract_byte_code,
-                           fetch_github_code, teal_to_bytes,
-                           verify_teal_contract)
+from app.api.utils import (
+    compose_github_url,
+    fetch_contract_byte_code,
+    fetch_github_code,
+    teal_to_bytes,
+    verify_teal_contract,
+)
 
 
 @pytest.mark.anyio

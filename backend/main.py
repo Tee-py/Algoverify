@@ -20,7 +20,6 @@ async def app_setup():
     app.ALGOD_CLIENT = algod.AlgodClient(
         "AV", settings.ALGO_NODE_URL, {"X-API-Key": "AV"}
     )
-   
 
     app.add_middleware(
         CORSMiddleware,
@@ -28,7 +27,6 @@ async def app_setup():
         allow_credentials=True,
         allow_methods=["*"],
     )
-  
 
 
 @app.on_event("shutdown")
