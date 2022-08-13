@@ -1,9 +1,12 @@
 from datetime import datetime
+
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
+
 from app.api.helpers import format_app
 from app.api.utils import verify_reach_contract, verify_teal_contract
+
 from .models import VerifyReachAppModel, VerifyTealAppModel
 
 router = APIRouter()
@@ -28,10 +31,9 @@ async def verify_teal_app(request: Request, app: VerifyTealAppModel) -> JSONResp
     except Exception as e:
         raise HTTPException(500, str(e))
     if success:
-        app_dict = jsonable_encoder(app)
         await request.app.db["apps"].insert_one(
             {
-                **app_dict,
+                **app,
                 "onchain_code": result["onchain-code"],
                 "type": "teal",
                 "verified": True,
