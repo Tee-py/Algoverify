@@ -1,7 +1,11 @@
 # Algoverify
-Verifies Algorand Smart Contract Codes against the one stored on Chain.
-Provides support for Teal and Reach Smart Contracts.
-Backend is written with FastApi and mongo-db while the frontend is written with ReactJs and Typescript.
+This is an application that can be used to check Algorand smart contract source code against the on-chain byte code. 
+It provides a backend API and a simple frontend interface to interact with the APIs.
+It provides support for `Teal` and `Reach` Smart Contracts.
+
+# LIVE DEMO VIDEO
+There is a live demo video on youtube for the application.
+https://youtu.be/YPCtxYBsUJY
 
 # FRONTEND
 The frontend is written in ReactJs and Typescript hosted on netflify.
@@ -29,6 +33,7 @@ It is hosted on aws ec2 and can be accessed via https://algoverify.xyz .
 - You can also run the backend using docker (`Dockerfile`).
 
 ## Tests
-- run `make -j run-dev test` to run testcases against local dev server
+Tests for the backend application are contained in the `tests` module.
+- run `make -j run-dev test` to run backend testcases against local dev server
 
 ### NB: To verify reach contracts you need to have Docker installed.
