@@ -3,9 +3,9 @@ from algosdk.v2client import algod, indexer
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
+
 from app.api.routers import router as api_router
 from config import settings
-
 
 app = FastAPI(title=settings.APP_NAME)
 

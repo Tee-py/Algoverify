@@ -1,9 +1,7 @@
-BLACK_CHECK_PARAMS = --diff --color --check
-
 lint:
 	isort .
 	flake8
-	black $(BLACK_CHECK_PARAMS) ./
+	black .
 
 run-dev:
 	python main.py

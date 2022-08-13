@@ -1,9 +1,12 @@
 from datetime import datetime
+
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
+
 from app.api.helpers import format_app
 from app.api.utils import verify_reach_contract, verify_teal_contract
+
 from .models import VerifyReachAppModel, VerifyTealAppModel
 
 router = APIRouter()

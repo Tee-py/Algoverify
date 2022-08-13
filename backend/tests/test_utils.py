@@ -11,8 +11,8 @@ from app.api.utils import (
 
 @pytest.mark.anyio
 async def test_fetch_contract_byte_code(test_data, indexer_client) -> None:
-    result = await fetch_contract_byte_code(test_data.APP_ID, indexer_client)
-    assert str(result["application"]["id"]) == test_data.APP_ID
+    result = await fetch_contract_byte_code(test_data.TEAL_APP_ID, indexer_client)
+    assert str(result["application"]["id"]) == test_data.TEAL_APP_ID
     assert "approval-program" in result["application"]["params"]
     assert "clear-state-program" in result["application"]["params"]
 
@@ -43,7 +43,7 @@ async def test_verify_teal_contract(test_data, indexer_client, algod_client) -> 
     status, result = await verify_teal_contract(
         test_data.APPROVAL_URL,
         test_data.CLEAR_STATE_URL,
-        test_data.APP_ID,
+        test_data.TEAL_APP_ID,
         algod_client,
         indexer_client,
     )
