@@ -25,7 +25,10 @@ It is hosted on aws ec2 and can be accessed via https://algoverify.xyz .
 - create a virtual environment and activate (you can use pipenv or venv for this)
 - Install the requirements in `requirements.txt` (For venv)
 - Create a  `.env` file with variables specified in `env.example` file (You can use [mongodb Atlas](https://www.mongodb.com/atlas/database) for free mongo db cluster).
-- run `python main.py`
+- run `python main.py` or `make run-dev` to start the development server
 - You can also run the backend using docker (`Dockerfile`).
+
+## Tests
+- run `make -j run-dev test` to run testcases against local dev server
 
 ### NB: To verify reach contracts you need to have Docker installed.
