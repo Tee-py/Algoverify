@@ -31,9 +31,10 @@ async def verify_teal_app(request: Request, app: VerifyTealAppModel) -> JSONResp
     except Exception as e:
         raise HTTPException(500, str(e))
     if success:
+        app_dict = jsonable_encoder(app)
         await request.app.db["apps"].insert_one(
             {
-                **app,
+                **app_dict,
                 "onchain_code": result["onchain-code"],
                 "type": "teal",
                 "verified": True,
