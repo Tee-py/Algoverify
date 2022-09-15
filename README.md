@@ -3,10 +3,6 @@ This is an application that can be used to check Algorand smart contract source 
 It provides a backend API and a simple frontend interface to interact with the APIs.
 It provides support for `Teal` and `Reach` Smart Contracts.
 
-# LIVE DEMO VIDEO
-There is a live demo video on youtube for the application.
-https://youtu.be/YPCtxYBsUJY
-
 # FRONTEND
 The frontend is written in ReactJs and Typescript hosted on netflify.
 It can be accessed via https://algoverify.netlify.app.
